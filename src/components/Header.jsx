@@ -2,11 +2,9 @@ import moment from 'moment';
 
 const Header = () => {
   return (
-    <div>
-      <div className="flex flex-col items-center">
-        <img src="/src/assets/logo.png" alt="" />
-      </div>
-      <p className="text-[#706F6F] text-center ">Journalism Without Fear or Favour</p>
+    <div className='mt-12'>
+      <img className='mx-auto mb-5' src="/src/assets/logo.png" alt="" />
+      <p className="text-[#706F6F] text-center mb-2 ">Journalism Without Fear or Favour</p>
       <p className="text-xl text-center">{moment().format("dddd, MMMM D , YYYY")}</p>
     </div>
   );
