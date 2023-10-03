@@ -1,14 +1,11 @@
-
-import { Outlet } from 'react-router-dom';
-import Navbar from '../components/Navbar';
+import { Outlet } from "react-router-dom";
 
 const Layout = () => {
-    return (
-        <div>
-            <Navbar></Navbar>
-            <Outlet></Outlet>
-        </div>
-    );
+  return (
+    <div className="font-poppins max-w-6xl mx-auto ">
+      <Outlet></Outlet>
+    </div>
+  );
 };
 
 export default Layout;
