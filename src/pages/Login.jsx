@@ -12,15 +12,12 @@ const Login = () => {
   const [showError, setShowError] = useState("");
 
   const location = useLocation();
-  console.log(location);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const email = form.get("email");
     const password = form.get("password");
-
-    console.log(email, password);
 
     // reseting error
     setShowError("");
