@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { useContext, useState } from "react";
 import { AuthContext } from "../Authentication/AuthProvider";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
 
@@ -17,6 +17,9 @@ const Login = () => {
         const password = form.get('password')
 
         console.log(email,password)
+
+        // reseting error
+        setShowError('')
 
         if(password.length<6){
             setShowError('Your password should be more than 6 charectars')
@@ -86,6 +89,7 @@ const Login = () => {
           </p>
         </div>
       </div>
+      <Toaster></Toaster>
     </div>
   );
 };

@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast";
 import Header from "../components/Header";
 import LatestNews from "../components/LatestNews";
 import LeftSidebar from "../components/LeftSideNav/LeftSidebar";
@@ -22,6 +23,7 @@ const Home = () => {
           <RightSidebar></RightSidebar>
         </div>
       </div>
+      <Toaster></Toaster>
     </div>
   );
 };
