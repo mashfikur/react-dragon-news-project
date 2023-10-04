@@ -1,11 +1,15 @@
+import Ads from "./Ads";
 import FindUs from "./FindUs";
 import LoginWith from "./LoginWith";
+import Qzone from "./Qzone";
 
 const RightSidebar = () => {
   return (
-    <div>
+    <div className="">
       <LoginWith></LoginWith>
       <FindUs></FindUs>
+      <Qzone></Qzone>
+      <Ads></Ads>
     </div>
   );
 };
