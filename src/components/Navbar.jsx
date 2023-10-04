@@ -1,8 +1,16 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import userImage from "../assets/user.png";
 import PropTypes from "prop-types";
+import { useContext } from "react";
+import { AuthContext } from "../Authentication/AuthProvider";
+import toast from "react-hot-toast";
 
 const Navbar = ({ bgColor }) => {
+
+  const location =useLocation()
+  console.log(location.pathname)
+
+  const { user, loading ,userSignOut} = useContext(AuthContext);
   const navLinks = (
     <>
       <li>
@@ -22,6 +30,16 @@ const Navbar = ({ bgColor }) => {
       </li>
     </>
   );
+
+  const handleLogout = () => {
+    userSignOut()
+    .then(() => {
+      toast.success("Logged Out Successfully")
+    })
+    .catch((error) => {
+      toast.error(`${error.message}`)
+    })
+  };
 
   return (
     <div className="mb-16">
@@ -56,17 +74,31 @@ const Navbar = ({ bgColor }) => {
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
         <div className="navbar-end flex gap-4">
-          <div className="avatar">
-            <div className="w-10 rounded-full">
-              <img src={userImage} />
-            </div>
-          </div>
-
-          <Link to="/login">
-            <button className="btn btn-neutral rounded px-8 py-0 capitalize">
-              Login
-            </button>
-          </Link>
+          {loading ? (
+            <span className="loading loading-spinner loading-lg"></span>
+          ) : user ? (
+            <>
+              <div className="avatar">
+                <div className="w-10 rounded-full">
+                  <img src={user.photoURL ? user.photoURL : userImage} />
+                </div>
+              </div>
+              <button onClick={handleLogout} className="btn btn-neutral">Log Out</button>
+            </>
+          ) : (
+              <>
+              <Link to="/register">
+                <button className="btn btn-neutral btn-outline rounded px-8 py-0 capitalize">
+                  Register
+                </button>
+              </Link>
+              <Link to="/login">
+                <button className="btn btn-neutral rounded px-8 py-0 capitalize">
+                  Login
+                </button>
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </div>
