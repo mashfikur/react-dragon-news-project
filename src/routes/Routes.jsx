@@ -12,6 +12,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+        loader: () => fetch("/news.json"),
       },
     ],
   },
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/register",
-    element: <Register></Register> ,
+    element: <Register></Register>,
   },
 ]);
 

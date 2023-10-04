@@ -7,7 +7,7 @@ import toast, { Toaster } from "react-hot-toast";
 const Register = () => {
   const [showError, setShowError] = useState("");
   const [termsChecked, setTermsChecked] = useState(false);
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   const { createUser } = useContext(AuthContext);
 
@@ -16,7 +16,6 @@ const Register = () => {
     const form = new FormData(e.currentTarget);
     const email = form.get("email");
     const password = form.get("password");
-
 
     // reseting error
     setShowError("");
@@ -28,16 +27,17 @@ const Register = () => {
     }
 
     //creating user
-    createUser(email,password)
-    .then(() => {
-        toast.success("Account Created Successfully")
+    createUser(email, password)
+      .then(() => {
+        toast.success("Account Created Successfully");
         e.target.reset();
-        navigate("/")
-
-    })
-    .catch((error) => {
-        toast.error(`${error.message}`)
-    })
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
+      })
+      .catch((error) => {
+        toast.error(`${error.message}`);
+      });
   };
 
   return (

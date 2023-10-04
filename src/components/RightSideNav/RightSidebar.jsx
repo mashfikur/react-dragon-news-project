@@ -5,7 +5,7 @@ import Qzone from "./Qzone";
 
 const RightSidebar = () => {
   return (
-    <div className="">
+    <div className="sticky top-2">
       <LoginWith></LoginWith>
       <FindUs></FindUs>
       <Qzone></Qzone>

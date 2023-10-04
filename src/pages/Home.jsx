@@ -5,19 +5,22 @@ import LeftSidebar from "../components/LeftSideNav/LeftSidebar";
 
 import Navbar from "../components/Navbar";
 import RightSidebar from "../components/RightSideNav/RightSidebar";
+import News from "../components/News/News";
+import { useLoaderData } from "react-router-dom";
 
 const Home = () => {
+  const allNews=useLoaderData()
   return (
-    <div>
+    <div className="mb-16">
       <Header></Header>
       <LatestNews></LatestNews>
-      <Navbar bgColor={100} ></Navbar>
+      <Navbar bgColor={100}></Navbar>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <div>
-            <LeftSidebar></LeftSidebar>
+          <LeftSidebar></LeftSidebar>
         </div>
         <div className="col-span-2">
-          <h3 className="text-5xl">this is the middle part</h3>
+          <News allNews={allNews} ></News>
         </div>
         <div>
           <RightSidebar></RightSidebar>

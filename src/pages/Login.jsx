@@ -5,46 +5,42 @@ import { AuthContext } from "../Authentication/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
+  const navigate = useNavigate();
 
-    const navigate=useNavigate()
+  const { userSignIn, setLoading } = useContext(AuthContext);
 
-    const {userSignIn,setLoading}=useContext(AuthContext)
+  const [showError, setShowError] = useState("");
 
-    const [showError,setShowError]=useState('')
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const email = form.get("email");
+    const password = form.get("password");
 
-    const handleSubmit =(e) => {
-        e.preventDefault()
-        const form = new FormData(e.currentTarget)
-        const email = form.get('email')
-        const password = form.get('password')
+    console.log(email, password);
 
-        console.log(email,password)
+    // reseting error
+    setShowError("");
 
-        // reseting error
-        setShowError('')
-
-        if(password.length<6){
-            setShowError('Your password should be more than 6 charectars')
-            return;
-        }
-
-        // user sign in 
-            userSignIn(email,password)
-            .then(() => {
-                toast.success("Logged in successfully")
-                e.target.reset()
-                setTimeout(() => {
-                    navigate("/")
-                }, 2000);
-            })
-            .catch((error) => {
-                toast.error(error.message)
-                setLoading(false)
-
-                
-            })
-
+    if (password.length < 6) {
+      setShowError("Your password should be more than 6 charectars");
+      return;
     }
+
+    // user sign in
+    userSignIn(email, password)
+      .then(() => {
+        toast.success("Logged in successfully");
+        e.target.reset();
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
+      })
+      .catch((error) => {
+        toast.error(error.message);
+        setLoading(false);
+      });
+  };
 
   return (
     <div className="bg-[#F3F3F3] min-h-screen">
@@ -56,7 +52,7 @@ const Login = () => {
           </h3>
           <hr className="mb-10" />
 
-          <form onSubmit={handleSubmit} >
+          <form onSubmit={handleSubmit}>
             <label>
               <h3 className=" text-[#403F3F] font-semibold mb-3">
                 Email Address
@@ -83,7 +79,9 @@ const Login = () => {
               />
             </label>
 
-            { showError && <p className="text-red-600 font-semibold">{showError}</p>}
+            {showError && (
+              <p className="text-red-600 font-semibold">{showError}</p>
+            )}
 
             <button className="btn  btn-neutral py-[1.13rem] capitalize w-full rounded-md mt-7">
               Login
