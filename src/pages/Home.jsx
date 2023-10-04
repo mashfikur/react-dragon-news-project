@@ -10,7 +10,7 @@ const Home = () => {
     <div>
       <Header></Header>
       <LatestNews></LatestNews>
-      <Navbar></Navbar>
+      <Navbar bgColor={100} ></Navbar>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <div>
             <LeftSidebar></LeftSidebar>
