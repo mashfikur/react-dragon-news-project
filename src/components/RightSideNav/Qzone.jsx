@@ -1,13 +1,15 @@
-
+import qzone1 from '../../assets/qZone1.png'
+import qzone2 from '../../assets/qZone2.png'
+import qzone3 from '../../assets/qZone3.png'
 const Qzone = () => {
     return (
         <div className="bg-base-200 p-3 rounded mb-5">
             <h3 className="text-xl font-bold">Q-Zone</h3>
 
                 <div>
-                    <img src={"/src/assets/qZone1.png"} alt="" />
-                    <img src={"/src/assets/qZone2.png"} alt="" />
-                    <img src={"/src/assets/qZone3.png"} alt="" />
+                    <img src={qzone1} alt="" />
+                    <img src={qzone2} alt="" />
+                    <img src={qzone3} alt="" />
                 </div>
                 
         </div>

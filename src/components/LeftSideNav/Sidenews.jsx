@@ -1,11 +1,15 @@
 import { BsCalendar } from "react-icons/bs";
 
+import side1 from '../../assets/1.png'
+import side2 from '../../assets/2.png'
+import side3 from '../../assets/3.png'
+
 const Sidenews = () => {
   return (
     <div className="mt-5">
       <div className="space-y-4">
         <div>
-          <img src="/src/assets/1.png" alt="" />
+          <img src={side1} alt="" />
           <h3 className="text-xl text-[#403F3F] font-semibold mt-5">
             Bayern Slams Authorities Over Flight Delay to Club World Cup
           </h3>
@@ -18,7 +22,7 @@ const Sidenews = () => {
           </span>
         </div>
         <div>
-          <img src="/src/assets/2.png" alt="" />
+          <img src={side2} alt="" />
           <h3 className="text-xl text-[#403F3F] font-semibold mt-5">
             Bayern Slams Authorities Over Flight Delay to Club World Cup
           </h3>
@@ -31,7 +35,7 @@ const Sidenews = () => {
           </span>
         </div>
         <div>
-          <img src="/src/assets/3.png" alt="" />
+          <img src={side3} alt="" />
           <h3 className="text-xl text-[#403F3F] font-semibold mt-5">
             Bayern Slams Authorities Over Flight Delay to Club World Cup
           </h3>
