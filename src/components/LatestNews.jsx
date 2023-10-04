@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const LatestNews = () => {
     return (
-        <div className="flex bg-base-300 p-4  rounded">
+        <div className="flex bg-base-300 p-4  rounded my-5 ">
             <button className="btn btn-md rounded p btn-secondary">Latest</button>
             <Marquee  pauseOnHover={true} speed={100}>
                 <Link className="mr-4" to="/">This is a sliding text which is really exciting because i havent seen something like this </Link>
