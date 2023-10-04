@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { useContext, useState } from "react";
 import { AuthContext } from "../Authentication/AuthProvider";
@@ -6,8 +6,9 @@ import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
 
+    const navigate=useNavigate()
 
-    const {userSignIn}=useContext(AuthContext)
+    const {userSignIn,setLoading}=useContext(AuthContext)
 
     const [showError,setShowError]=useState('')
 
@@ -31,9 +32,16 @@ const Login = () => {
             userSignIn(email,password)
             .then(() => {
                 toast.success("Logged in successfully")
+                e.target.reset()
+                setTimeout(() => {
+                    navigate("/")
+                }, 2000);
             })
             .catch((error) => {
-                setShowError(error.message)
+                toast.error(error.message)
+                setLoading(false)
+
+                
             })
 
     }

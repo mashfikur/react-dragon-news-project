@@ -1,4 +1,4 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import userImage from "../assets/user.png";
 import PropTypes from "prop-types";
 import { useContext } from "react";
@@ -6,11 +6,7 @@ import { AuthContext } from "../Authentication/AuthProvider";
 import toast from "react-hot-toast";
 
 const Navbar = ({ bgColor }) => {
-
-  const location =useLocation()
-  console.log(location.pathname)
-
-  const { user, loading ,userSignOut} = useContext(AuthContext);
+  const { user, loading, userSignOut, setUser } = useContext(AuthContext);
   const navLinks = (
     <>
       <li>
@@ -33,12 +29,13 @@ const Navbar = ({ bgColor }) => {
 
   const handleLogout = () => {
     userSignOut()
-    .then(() => {
-      toast.success("Logged Out Successfully")
-    })
-    .catch((error) => {
-      toast.error(`${error.message}`)
-    })
+      .then(() => {
+        toast.success("Logged Out Successfully");
+        setUser(false);
+      })
+      .catch((error) => {
+        toast.error(`${error.message}`);
+      });
   };
 
   return (
@@ -83,10 +80,12 @@ const Navbar = ({ bgColor }) => {
                   <img src={user.photoURL ? user.photoURL : userImage} />
                 </div>
               </div>
-              <button onClick={handleLogout} className="btn btn-neutral">Log Out</button>
+              <button onClick={handleLogout} className="btn btn-neutral">
+                Log Out
+              </button>
             </>
           ) : (
-              <>
+            <>
               <Link to="/register">
                 <button className="btn btn-neutral btn-outline rounded px-8 py-0 capitalize">
                   Register
