@@ -7,9 +7,12 @@ import toast, { Toaster } from "react-hot-toast";
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
+  const from = location?.state?.from?.pathname ||"/" ;
+
   console.log(location)
 
-  let from = location.state?.from?.pathname || "/";
+
 
   const { userSignIn, setLoading } = useContext(AuthContext);
 
@@ -37,7 +40,10 @@ const Login = () => {
         toast.success("Logged in successfully");
         e.target.reset();
         // navigate(location.state?location.state:"/")
-        navigate(from , { replace: true });
+        setTimeout(() => {
+          navigate(from, {replace:true} )
+        }, 1000);
+
       })
       .catch((error) => {
         toast.error(error.message);

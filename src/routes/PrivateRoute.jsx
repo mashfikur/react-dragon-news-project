@@ -5,7 +5,7 @@ import { Navigate, useLocation } from "react-router-dom";
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
-  const location =useLocation()
+  const location = useLocation();
 
   if (loading) {
     return <span className="loading loading-infinity loading-lg"></span>;
@@ -17,7 +17,7 @@ const PrivateRoute = ({ children }) => {
 
   //<Navigate state={location.pathname} to="/login"></Navigate>
 
-  return <Navigate to="/login" state={{ from: location }} replace />;
+  return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
 };
 
 PrivateRoute.propTypes = {
