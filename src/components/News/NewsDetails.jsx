@@ -22,7 +22,7 @@ const NewsDetails = () => {
         <div className="lg:col-span-3">
           <h3 className="text-xl font-bold mb-5">Dragon News </h3>
           <div className="p-7 border-2 rounded-lg">
-            <img src={selectedNews.image_url} alt="" />
+            <img className="w-full" src={selectedNews.image_url} alt="" />
             <h3 className="text-2xl my-5 font-bold">{selectedNews.title}</h3>
             <p className="text-[#706F6F]  mb-10 ">{selectedNews.details}</p>
             <Link to="/">
